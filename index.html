@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Emerald Splash Catalog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta property="og:title" content="Emerald Splash Catalog">
+  <meta property="og:description" content="Built with Magic Loops">
+  <meta property="og:image" content="https://magicloops.dev/images/preview.png">
+  <meta property="og:url" content="https://rq3jy.magicloops.app">
+  <meta name="twitter:card" content="https://magicloops.dev/images/preview.png">
+  <style>
+    body {
+      margin: 0; padding: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100vh;
+    }
+    .hidden-iframe {
+      display: none; /* keep hidden for silent refresh */
+      width: 0; height: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 
+    The main application content is in an <iframe> 
+    with user-generated HTML (appData.html).
+  -->
+  <iframe 
+    srcdoc='&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Emerald Splash - Joyería Especializada en Esmeraldas&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;family=Montserrat:wght@300;400;600&amp;display=swap&quot;&gt;
+    &lt;style id=&quot;app-style&quot;&gt;
+        :root {
+            --emerald-dark: #065f46;
+            --emerald: #10b981;
+            --emerald-light: #a7f3d0;
+            --gold: #fbbf24;
+        }
+        
+        body {
+            font-family: &#039;Montserrat&#039;, sans-serif;
+            background-color: #f8f9fa;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: &#039;Playfair Display&#039;, serif;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 100%);
+        }
+        
+        .logo-text {
+            font-family: &#039;Playfair Display&#039;, serif;
+            letter-spacing: 1px;
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--emerald);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .buy-btn {
+            background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--emerald) 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .buy-btn:hover {
+            background: var(--emerald-dark);
+            box-shadow: 0 4px 8px rgba(10, 185, 129, 0.3);
+        }
+        
+        .feature-icon {
+            color: var(--emerald);
+            font-size: 1.2rem;
+        }
+        
+        .product-info-label {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-weight: 600;
+        }
+        
+        .product-info-value {
+            font-size: 0.95rem;
+            color: #1f2937;
+        }
+        
+        .price {
+            color: var(--emerald-dark);
+            font-weight: 700;
+        }
+        
+        .loader {
+            border-top-color: var(--emerald);
+            border-left-color: var(--emerald);
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(&#039;https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.jpg&#039;);
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+        }
+        
+        .scroll-top {
+            background-color: var(--emerald);
+            bottom: 30px;
+            right: 30px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-top.show {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .product-image {
+                height: 200px;
+            }
+        }
+        
+        .filter-bar {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .jewel-type-badge {
+            background-color: var(--emerald-light);
+            color: var(--emerald-dark);
+        }
+
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;min-h-screen flex flex-col&quot;&gt;
+    &lt;!-- Header --&gt;
+    &lt;header class=&quot;sticky top-0 z-50 w-full bg-white shadow-md&quot;&gt;
+        &lt;div class=&quot;header text-white py-4&quot;&gt;
+            &lt;div class=&quot;container mx-auto px-4 flex justify-between items-center&quot;&gt;
+                &lt;div class=&quot;flex items-center&quot;&gt;
+                    &lt;i class=&quot;fas fa-gem text-3xl mr-2 text-yellow-300&quot;&gt;&lt;/i&gt;
+                    &lt;h1 class=&quot;text-2xl md:text-3xl logo-text font-bold&quot;&gt;Emerald Splash&lt;/h1&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;hidden md:flex space-x-6 items-center&quot;&gt;
+                    &lt;a href=&quot;javascript:void(0)&quot; class=&quot;hover:text-yellow-200 transition-colors duration-300&quot;&gt;Inicio&lt;/a&gt;
+                    &lt;a href=&quot;javascript:void(0)&quot; class=&quot;hover:text-yellow-200 transition-colors duration-300&quot;&gt;Catálogo&lt;/a&gt;
+                    &lt;a href=&quot;javascript:void(0)&quot; class=&quot;hover:text-yellow-200 transition-colors duration-300&quot;&gt;Sobre Nosotros&lt;/a&gt;
+                    &lt;a href=&quot;javascript:void(0)&quot; class=&quot;hover:text-yellow-200 transition-colors duration-300&quot;&gt;Contacto&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;md:hidden&quot;&gt;
+                    &lt;button id=&quot;mobile-menu-button&quot; class=&quot;focus:outline-none&quot;&gt;
+                        &lt;i class=&quot;fas fa-bars text-2xl&quot;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- Mobile Menu --&gt;
+        &lt;div id=&quot;mobile-menu&quot; class=&quot;hidden bg-white w-full py-4 shadow-lg&quot;&gt;
+            &lt;div class=&quot;container mx-auto px-4&quot;&gt;
+                &lt;div class=&quot;flex flex-col space-y-4&quot;&gt;
+                    &lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-800 hover:text-green-600 transition-colors duration-300&quot;&gt;Inicio&lt;/a&gt;
+                    &lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-800 hover:text-green-600 transition-colors duration-300&quot;&gt;Catálogo&lt;/a&gt;
+                    &lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-800 hover:text-green-600 transition-colors duration-300&quot;&gt;Sobre Nosotros&lt;/a&gt;
+                    &lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-800 hover:text-green-600 transition-colors duration-300&quot;&gt;Contacto&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Hero Section --&gt;
+    &lt;div class=&quot;relative overflow-hidden bg-cover bg-center h-80 md:h-96&quot; style=&quot;background-image: url(&#039;https://cdn.pixabay.com/photo/2016/11/08/05/15/diamond-1807733_960_720.jpg&#039;);&quot;&gt;
+        &lt;div class=&quot;absolute inset-0 bg-black bg-opacity-60&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;container mx-auto px-4 h-full flex flex-col justify-center items-center relative z-10 text-center&quot;&gt;
+            &lt;h1 class=&quot;text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4&quot;&gt;Colección de Esmeraldas&lt;/h1&gt;
+            &lt;p class=&quot;text-lg md:text-xl text-white mb-6 max-w-xl&quot;&gt;Descubre nuestra exclusiva selección de joyas con esmeraldas colombianas de la más alta calidad&lt;/p&gt;
+            &lt;a href=&quot;#catalogo&quot; class=&quot;bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105&quot;&gt;
+                Ver Catálogo
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Filter Bar --&gt;
+    &lt;div class=&quot;filter-bar sticky top-20 z-40 py-3&quot;&gt;
+        &lt;div class=&quot;container mx-auto px-4&quot;&gt;
+            &lt;div class=&quot;flex flex-wrap items-center justify-between gap-4&quot;&gt;
+                &lt;div class=&quot;flex items-center space-x-2&quot;&gt;
+                    &lt;span class=&quot;text-gray-700 font-semibold&quot;&gt;Filtrar por:&lt;/span&gt;
+                    &lt;select id=&quot;filter-type&quot; class=&quot;border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-green-500&quot;&gt;
+                        &lt;option value=&quot;all&quot;&gt;Todos los tipos&lt;/option&gt;
+                        &lt;option value=&quot;anillo&quot;&gt;Anillos&lt;/option&gt;
+                        &lt;option value=&quot;collar&quot;&gt;Collares&lt;/option&gt;
+                        &lt;option value=&quot;pendiente&quot;&gt;Pendientes&lt;/option&gt;
+                        &lt;option value=&quot;pulsera&quot;&gt;Pulseras&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;flex items-center space-x-2&quot;&gt;
+                    &lt;span class=&quot;text-gray-700 font-semibold&quot;&gt;Ordenar por:&lt;/span&gt;
+                    &lt;select id=&quot;sort-by&quot; class=&quot;border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-green-500&quot;&gt;
+                        &lt;option value=&quot;price-asc&quot;&gt;Precio: menor a mayor&lt;/option&gt;
+                        &lt;option value=&quot;price-desc&quot;&gt;Precio: mayor a menor&lt;/option&gt;
+                        &lt;option value=&quot;carat-asc&quot;&gt;Quilates: menor a mayor&lt;/option&gt;
+                        &lt;option value=&quot;carat-desc&quot;&gt;Quilates: mayor a menor&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Catalog Section --&gt;
+    &lt;section id=&quot;catalogo&quot; class=&quot;py-12 bg-gray-50&quot;&gt;
+        &lt;div class=&quot;container mx-auto px-4&quot;&gt;
+            &lt;h2 class=&quot;text-3xl md:text-4xl font-bold text-center mb-2&quot;&gt;Nuestro Catálogo&lt;/h2&gt;
+            &lt;p class=&quot;text-gray-600 text-center mb-12 max-w-3xl mx-auto&quot;&gt;Cada joya es única, elaborada con piedras de esmeralda seleccionadas cuidadosamente y engarzadas a mano por nuestros maestros joyeros.&lt;/p&gt;
+            
+            &lt;!-- Loading Indicator --&gt;
+            &lt;div id=&quot;loading&quot; class=&quot;flex justify-center items-center py-20&quot;&gt;
+                &lt;div class=&quot;loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4&quot;&gt;&lt;/div&gt;
+                &lt;p class=&quot;ml-4 text-xl text-gray-600&quot;&gt;Cargando catálogo...&lt;/p&gt;
+            &lt;/div&gt;
+            
+            &lt;!-- Products Grid --&gt;
+            &lt;div id=&quot;products-grid&quot; class=&quot;grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8&quot;&gt;
+                &lt;!-- Products will be inserted here by JavaScript --&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- About Section --&gt;
+    &lt;section class=&quot;py-16 bg-white&quot;&gt;
+        &lt;div class=&quot;container mx-auto px-4&quot;&gt;
+            &lt;div class=&quot;flex flex-col md:flex-row items-center gap-8&quot;&gt;
+                &lt;div class=&quot;md:w-1/2&quot;&gt;
+                    &lt;img src=&quot;https://cdn.pixabay.com/photo/2017/02/22/20/13/jewelry-2090405_960_720.jpg&quot; alt=&quot;Taller de joyería&quot; class=&quot;rounded-lg shadow-lg w-full h-auto&quot;&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;md:w-1/2&quot;&gt;
+                    &lt;h2 class=&quot;text-3xl md:text-4xl font-bold mb-6&quot;&gt;Sobre Emerald Splash&lt;/h2&gt;
+                    &lt;p class=&quot;text-gray-700 mb-4&quot;&gt;Somos una joyería especializada en esmeraldas colombianas, reconocidas mundialmente por su calidad superior y su intenso color verde.&lt;/p&gt;
+                    &lt;p class=&quot;text-gray-700 mb-6&quot;&gt;Cada pieza es creada artesanalmente, combinando técnicas tradicionales con diseños contemporáneos para realzar la belleza natural de estas gemas preciosas.&lt;/p&gt;
+                    &lt;div class=&quot;flex flex-wrap gap-4&quot;&gt;
+                        &lt;div class=&quot;flex items-center&quot;&gt;
+                            &lt;i class=&quot;fas fa-medal text-green-600 mr-2 text-2xl&quot;&gt;&lt;/i&gt;
+                            &lt;span&gt;Certificado de autenticidad&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;flex items-center&quot;&gt;
+                            &lt;i class=&quot;fas fa-truck text-green-600 mr-2 text-2xl&quot;&gt;&lt;/i&gt;
+                            &lt;span&gt;Envío seguro internacional&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;flex items-center&quot;&gt;
+                            &lt;i class=&quot;fas fa-gem text-green-600 mr-2 text-2xl&quot;&gt;&lt;/i&gt;
+                            &lt;span&gt;Esmeraldas de alta calidad&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;footer class=&quot;bg-gray-900 text-white py-12 mt-auto&quot;&gt;
+        &lt;div class=&quot;container mx-auto px-4&quot;&gt;
+            &lt;div class=&quot;grid grid-cols-1 md:grid-cols-3 gap-8&quot;&gt;
+                &lt;div&gt;
+                    &lt;h3 class=&quot;text-2xl font-bold mb-4 flex items-center&quot;&gt;
+                        &lt;i class=&quot;fas fa-gem text-yellow-400 mr-2&quot;&gt;&lt;/i&gt;
+                        Emerald Splash
+                    &lt;/h3&gt;
+                    &lt;p class=&quot;text-gray-400 mb-4&quot;&gt;Joyería especializada en esmeraldas de la más alta calidad desde 2010.&lt;/p&gt;
+                    &lt;div class=&quot;flex space-x-4&quot;&gt;
+                        &lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;
+                            &lt;i class=&quot;fab fa-facebook-f text-xl&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                        &lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;
+                            &lt;i class=&quot;fab fa-instagram text-xl&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                        &lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;
+                            &lt;i class=&quot;fab fa-twitter text-xl&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                        &lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;
+                            &lt;i class=&quot;fab fa-pinterest-p text-xl&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4 class=&quot;text-xl font-bold mb-4&quot;&gt;Enlaces rápidos&lt;/h4&gt;
+                    &lt;ul class=&quot;space-y-2&quot;&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;Inicio&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;Catálogo&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;Sobre nosotros&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;Contacto&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:void(0)&quot; class=&quot;text-gray-400 hover:text-white transition-colors&quot;&gt;Política de privacidad&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;h4 class=&quot;text-xl font-bold mb-4&quot;&gt;Contáctanos&lt;/h4&gt;
+                    &lt;ul class=&quot;space-y-3&quot;&gt;
+                        &lt;li class=&quot;flex items-start&quot;&gt;
+                            &lt;i class=&quot;fas fa-map-marker-alt mt-1 mr-3 text-green-500&quot;&gt;&lt;/i&gt;
+                            &lt;span&gt;Av. Principal #123, Bogotá, Colombia&lt;/span&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;flex items-start&quot;&gt;
+                            &lt;i class=&quot;fas fa-phone-alt mt-1 mr-3 text-green-500&quot;&gt;&lt;/i&gt;
+                            &lt;span&gt;+57 304 257 5613&lt;/span&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;flex items-start&quot;&gt;
+                            &lt;i class=&quot;fas fa-envelope mt-1 mr-3 text-green-500&quot;&gt;&lt;/i&gt;
+                            &lt;span&gt;contacto@emeraldsplash.com&lt;/span&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;flex items-start&quot;&gt;
+                            &lt;i class=&quot;fas fa-clock mt-1 mr-3 text-green-500&quot;&gt;&lt;/i&gt;
+                            &lt;span&gt;Lun - Sáb: 10:00 - 20:00&lt;/span&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;border-t border-gray-800 mt-12 pt-6 text-center text-gray-500&quot;&gt;
+                &lt;p&gt;&amp;copy; 2025 Emerald Splash. Todos los derechos reservados.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/footer&gt;
+
+    &lt;!-- Scroll to Top Button --&gt;
+    &lt;button id=&quot;scroll-top&quot; class=&quot;scroll-top fixed w-12 h-12 rounded-full flex items-center justify-center text-white z-50&quot;&gt;
+        &lt;i class=&quot;fas fa-chevron-up&quot;&gt;&lt;/i&gt;
+    &lt;/button&gt;
+
+    &lt;script id=&quot;app-script&quot;&gt;
+        document.addEventListener(&#039;DOMContentLoaded&#039;, function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById(&#039;mobile-menu-button&#039;);
+            const mobileMenu = document.getElementById(&#039;mobile-menu&#039;);
+            
+            mobileMenuButton.addEventListener(&#039;click&#039;, function() {
+                mobileMenu.classList.toggle(&#039;hidden&#039;);
+            });
+            
+            // Scroll to top functionality
+            const scrollTopButton = document.getElementById(&#039;scroll-top&#039;);
+            
+            window.addEventListener(&#039;scroll&#039;, function() {
+                if (window.pageYOffset &gt; 300) {
+                    scrollTopButton.classList.add(&#039;show&#039;);
+                } else {
+                    scrollTopButton.classList.remove(&#039;show&#039;);
+                }
+            });
+            
+            scrollTopButton.addEventListener(&#039;click&#039;, function() {
+                window.scrollTo({ top: 0, behavior: &#039;smooth&#039; });
+            });
+
+            // Product data (from user attachment)
+           // Product data (from user attachment) - VERSIÓN CORREGIDA
+const products = [
+    {
+        id: 1,
+        name: "Anillos de plata 925k con esmeraldas",
+        type: "anillo",
+        description: "Pequeños circones suizos en la horna, zafiro azul central. Ideal para uso diario.",
+        price: 200000,
+        grams: 5.2,
+        carats: 0.9,
+        image: "1.png"
+    },
+    {
+        id: 2,
+        name: "Dije pasa-cadenas lágrima biselada",
+        type: "dije",
+        description: "Diseño minimalista con pequeñas esmeraldas, perfecto para uso cotidiano.",
+        price: 800000,
+        grams: 3.8,
+        carats: 1.2,
+        image: "2.png"
+    },
+    {
+        id: 3,
+        name: "Pulsera tennis con esmeralda ovalada",
+        type: "pulsera",
+        description: "Elegante pulsera tennis con esmeralda ovalada central.",
+        price: 1400000,
+        grams: 8.5,
+        carats: 2.1,
+        image: "3.png"
+    },
+    {
+        id: 4,
+        name: "Anillos de plata 950k con esmeralda",
+        type: "anillo",
+        description: "Forma delgada con engaste sencillo y esmeralda central de color intenso.",
+        price: 300000,
+        grams: 4.7,
+        carats: 1.1,
+        image: "4.png"
+    },
+    {
+        id: 5,
+        name: "Prendas en oro 18K con esmeraldas y diamantes",
+        type: "anillo",
+        description: "Pieza que combina elegancia y distinción, gemelos con esmeralda en oro 18k.",
+        price: 1450000,
+        grams: 12.3,
+        carats: 3.5,
+        image: "5.png"
+    },
+    {
+        id: 6,
+        name: "Aretes y dije esmeraldas talla lágrimas",
+        type: "combo",
+        description: "Aretes y dije de plata 950k con esmeraldas en talla lágrima de 3-5 cts por pieza.",
+        price: 1500000,
+        grams: 5.8,
+        carats: 1.4,
+        image: "6.png"
+    }
+];
+            
+            // Format price in Colombian Pesos
+            function formatPrice(price) {
+                return new Intl.NumberFormat(&#039;es-CO&#039;, {
+                    style: &#039;currency&#039;,
+                    currency: &#039;COP&#039;,
+                    minimumFractionDigits: 0
+                }).format(price);
+            }
+            
+            // Render products
+            function renderProducts(productList) {
+                const productsContainer = document.getElementById(&#039;products-grid&#039;);
+                productsContainer.innerHTML = &#039;&#039;;
+                
+                if (productList.length === 0) {
+                    productsContainer.innerHTML = `
+                        &lt;div class=&quot;col-span-full text-center py-12&quot;&gt;
+                            &lt;i class=&quot;fas fa-search text-4xl text-gray-400 mb-4&quot;&gt;&lt;/i&gt;
+                            &lt;p class=&quot;text-xl text-gray-600&quot;&gt;No se encontraron productos que coincidan con el filtro seleccionado.&lt;/p&gt;
+                        &lt;/div&gt;
+                    `;
+                    return;
+                }
+                
+                productList.forEach(product =&gt; {
+                    const productCard = document.createElement(&#039;div&#039;);
+                    productCard.className = &#039;product-card bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg&#039;;
+                    
+                    productCard.innerHTML = `
+                        &lt;div class=&quot;product-image&quot;&gt;
+                            &lt;img src=&quot;${product.image}&quot; alt=&quot;${product.name}&quot; class=&quot;w-full h-full&quot;&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;p-5&quot;&gt;
+                            &lt;span class=&quot;jewel-type-badge text-xs font-bold uppercase tracking-wider px-2 py-1 rounded-full&quot;&gt;${product.type}&lt;/span&gt;
+                            &lt;h3 class=&quot;text-xl font-bold mt-2 mb-1&quot;&gt;${product.name}&lt;/h3&gt;
+                            &lt;p class=&quot;text-gray-600 text-sm mb-3&quot;&gt;${product.description}&lt;/p&gt;
+                            &lt;div class=&quot;flex flex-wrap gap-3 mb-4&quot;&gt;
+                                &lt;div class=&quot;flex items-center&quot;&gt;
+                                    &lt;i class=&quot;fas fa-tag feature-icon mr-1&quot;&gt;&lt;/i&gt;
+                                    &lt;span class=&quot;product-info-label mr-1&quot;&gt;Precio:&lt;/span&gt;
+                                    &lt;span class=&quot;price&quot;&gt;${formatPrice(product.price)}&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;flex items-center&quot;&gt;
+                                    &lt;i class=&quot;fas fa-weight feature-icon mr-1&quot;&gt;&lt;/i&gt;
+                                    &lt;span class=&quot;product-info-label mr-1&quot;&gt;Peso:&lt;/span&gt;
+                                    &lt;span class=&quot;product-info-value&quot;&gt;${product.grams}g&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;flex items-center&quot;&gt;
+                                    &lt;i class=&quot;fas fa-gem feature-icon mr-1&quot;&gt;&lt;/i&gt;
+                                    &lt;span class=&quot;product-info-label mr-1&quot;&gt;Quilates:&lt;/span&gt;
+                                    &lt;span class=&quot;product-info-value&quot;&gt;${product.carats}ct&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;button class=&quot;buy-btn w-full text-white py-2 px-4 rounded-md font-medium flex items-center justify-center&quot; 
+                                    onclick=&quot;window.open(&#039;https://wa.me/573042575613?text=Hola,%20estoy%20interesado%20en%20${encodeURIComponent(product.name)}%20por%20${formatPrice(product.price)}&#039;, &#039;_blank&#039;)&quot;&gt;
+                                &lt;i class=&quot;fab fa-whatsapp mr-2&quot;&gt;&lt;/i&gt; Comprar
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    `;
+                    
+                    productsContainer.appendChild(productCard);
+                });
+            }
+            
+            // Simulate loading
+            setTimeout(() =&gt; {
+                document.getElementById(&#039;loading&#039;).style.display = &#039;none&#039;;
+                renderProducts(products);
+            }, 1000);
+            
+            // Filter functionality
+            const filterType = document.getElementById(&#039;filter-type&#039;);
+            const sortBy = document.getElementById(&#039;sort-by&#039;);
+            
+            function applyFilters() {
+                const typeFilter = filterType.value;
+                const sortOption = sortBy.value;
+                
+                let filteredProducts = [...products];
+                
+                // Apply type filter
+                if (typeFilter !== &#039;all&#039;) {
+                    filteredProducts = filteredProducts.filter(product =&gt; product.type === typeFilter);
+                }
+                
+                // Apply sorting
+                switch (sortOption) {
+                    case &#039;price-asc&#039;:
+                        filteredProducts.sort((a, b) =&gt; a.price - b.price);
+                        break;
+                    case &#039;price-desc&#039;:
+                        filteredProducts.sort((a, b) =&gt; b.price - a.price);
+                        break;
+                    case &#039;carat-asc&#039;:
+                        filteredProducts.sort((a, b) =&gt; a.carats - b.carats);
+                        break;
+                    case &#039;carat-desc&#039;:
+                        filteredProducts.sort((a, b) =&gt; b.carats - a.carats);
+                        break;
+                    default:
+                        break;
+                }
+                
+                renderProducts(filteredProducts);
+            }
+            
+            filterType.addEventListener(&#039;change&#039;, applyFilters);
+            sortBy.addEventListener(&#039;change&#039;, applyFilters);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll(&#039;a[href^=&quot;#&quot;]&#039;).forEach(anchor =&gt; {
+                anchor.addEventListener(&#039;click&#039;, function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute(&#039;href&#039;));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: &#039;smooth&#039;
+                        });
+                    }
+                });
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;' 
+    sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-modals allow-downloads allow-popups allow-presentation">
+  </iframe>
+
+  <!-- Hidden iframe used for "silent" SSO attempts -->
+  <iframe 
+    id="silentAuthFrame" 
+    class="hidden-iframe"
+    sandbox="allow-same-origin allow-scripts allow-forms">
+  </iframe>
+
+  <script>
+    /**
+     * 1) On page load, we check if the subdomain JWT is valid.
+     * 2) If not valid, we attempt a SILENT login in a hidden iframe.
+     * 3) If silent login fails, we open a POPUP for a visible login.
+     * 4) We also schedule a token refresh before it expires.
+     */
+    (function(){
+      const VERIFY_ENDPOINT = '/api/auth/verify';
+      const SUBDOMAIN = window.location.host.split('.')[0] || 'blog'; 
+      // e.g. "app1" from "app1.magicloops.dev"
+
+      // Build the authorize URL to magicloops.dev
+      // This will generate a single-use code & redirect back to our callback
+      // "redirect_to" => subdomain callback, which sets our cookie
+      const AUTH_BASE = 'https://magicloops.dev/api/sso/authorize';
+      const LOGIN_BASE = 'https://magicloops.dev/login';
+      const CALLBACK_URL = `https://${window.location.host}/api/auth/callback`;
+      const authorizeUrl = new URL(AUTH_BASE);
+      authorizeUrl.searchParams.set('subdomain', SUBDOMAIN);
+      authorizeUrl.searchParams.set('redirect_to', CALLBACK_URL);
+      const loginUrl = new URL(AUTH_BASE);
+      loginUrl.searchParams.set('subdomain', SUBDOMAIN);
+      loginUrl.searchParams.set('redirect_to', CALLBACK_URL);
+
+      /**
+       * Make a GET request to /api/auth/verify to see if subdomain_jwt is valid.
+       * Returns { userId, exp } if OK, or 401 if missing/expired.
+       */
+      async function verifySession() {
+        const resp = await fetch(VERIFY_ENDPOINT, { method: 'GET' });
+        if (!resp.ok) {
+          throw new Error('Verify failed: ' + resp.status);
+        }
+        return await resp.json(); // { userId, exp }
+      }
+
+      /**
+       * Perform a "silent" SSO attempt by loading the authorize endpoint
+       * in a hidden iframe. If the main domain session is still valid,
+       * the user won't see a login prompt. On success, our callback sets the cookie.
+       *
+       * We'll wait for the iframe to load & then re-check our subdomain /verify.
+       */
+      async function doSilentAuth() {
+        return new Promise((resolve, reject) => {
+          const frame = document.getElementById('silentAuthFrame');
+          frame.src = authorizeUrl.toString();
+
+          // We'll listen to "load" event. Once it loads, we check /verify again.
+          frame.onload = async function() {
+            try {
+              const data = await verifySession();
+              resolve(data); // userId, exp
+            } catch (err) {
+              reject(err);
+            }
+          };
+
+          // Optional: handle error event
+          frame.onerror = () => {
+            reject(new Error('Hidden iframe load error'));
+          };
+        });
+      }
+
+      /**
+       * Open a popup with the magicloops.dev authorize URL.
+       * If the user needs to log in, they'll see the Supabase screen.
+       * Once the callback sets the JWT, we poll for closure & re-verify.
+       */
+      async function doPopupAuth() {
+        return new Promise((resolve, reject) => {
+          const popup = window.open(
+            loginUrl.toString(),
+            'authPopup',
+            'width=600,height=700'
+          );
+          if (!popup) {
+            return reject(new Error('Popup blocked'));
+          }
+
+          const timer = setInterval(async () => {
+            // If popup closed, check if we have a valid session
+            if (popup.closed) {
+              clearInterval(timer);
+              try {
+                const data = await verifySession();
+                resolve(data);
+              } catch (err) {
+                reject(err);
+              }
+            }
+          }, 500);
+        });
+      }
+
+      /**
+       * The main login flow attempt:
+       * 1) Try verifying subdomain_jwt
+       * 2) If missing/expired, attempt SILENT iframe
+       * 3) If silent fails => fallback to POPUP
+       */
+      async function ensureLoggedIn() {
+        try {
+          const info = await verifySession();
+          // Already valid. Return info { userId, exp }
+          return info;
+        } catch (err) {
+          // Not logged in or token expired
+          console.log('No valid subdomain JWT, attempting silent auth...');
+        }
+
+        // Attempt silent auth in hidden iframe
+        try {
+          const info = await doSilentAuth();
+          console.log('Silent auth success:', info);
+          return info;
+        } catch (err) {
+          console.warn('Silent auth failed, opening popup...');
+        }
+
+        // Fallback to popup
+        try {
+//          const info = await doPopupAuth();
+//          console.log('Popup auth success:', info);
+//          return info;
+        } catch (err) {
+          console.error('Popup login failed or canceled:', err);
+          throw err;
+        }
+      }
+
+      /**
+       * Schedule an automatic token refresh a bit before the token expires.
+       * For example, refresh 1 minute before exp or halfway—your choice.
+       */
+      function scheduleAutoRefresh(exp) {
+        // Current time in seconds
+        const nowSeconds = Math.floor(Date.now() / 1000);
+        // Refresh 30 seconds before actual expiration, for safety
+        const refreshTime = Math.max((exp - 30) - nowSeconds, 1);
+        const refreshMs = refreshTime * 1000;
+
+        console.log('Scheduling refresh in', refreshTime, 'seconds');
+        setTimeout(async () => {
+          console.log('Attempting token refresh...');
+          try {
+            const info = await doSilentAuth();
+            console.log('Token silently refreshed:', info);
+            scheduleAutoRefresh(info.exp);
+          } catch (err) {
+            console.warn('Silent refresh failed, fallback to popup...');
+            // If silent refresh fails, we do popup to re-auth
+            try {
+//              const info = await doPopupAuth();
+//              console.log('Popup refresh success:', info);
+//              scheduleAutoRefresh(info.exp);
+            } catch (popErr) {
+              console.error('Popup refresh also failed. User not logged in:', popErr);
+            }
+          }
+        }, refreshMs);
+      }
+
+      // Now, run the main flow on page load
+      (async function main() {
+        try {
+console.log('Hello Magic App User!');
+          const info = await ensureLoggedIn();
+          console.log('User is logged in:', info);
+          // After we confirm a valid JWT, we schedule the refresh
+          scheduleAutoRefresh(info.exp);
+        } catch (err) {
+          console.error('User is not logged in and refused to log in:', err);
+          // Show a message or redirect if needed
+        }
+      })();
+
+    })();
+  </script>
+</body>
+</html>
